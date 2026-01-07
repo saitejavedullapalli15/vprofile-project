@@ -179,33 +179,50 @@
                 </configuration>
             </plugin>
 		<!-- CODE COVERAGE -->
-	            <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-war-plugin</artifactId>
-                     <version>3.2.2</version>
-                    </plugin>
- 		    <plugin>
- 		        <groupId>org.jacoco</groupId>
- 		        <artifactId>jacoco-maven-plugin</artifactId>
-			<version>0.8.4</version>
- 		        <executions>
- 		            <execution>
- 		                <id>jacoco-initialize</id>
- 		                <phase>process-resources</phase>
- 		                <goals>
- 		                    <goal>prepare-agent</goal>
- 		                </goals>
- 		            </execution>
- 		            <execution>
- 		                <id>jacoco-site</id>
- 		                <phase>post-integration-test</phase>
- 		                <goals>
- 		                    <goal>report</goal>
- 		                </goals>
- 		            </execution>
- 		        </executions>
- 		</plugin>
-		
-        </plugins>
-    </build>
-</project>
+	            <build>
+    <plugins>
+
+        <plugin>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <version>9.2.11.v20150529</version>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.2.2</version>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.11</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+    </plugins>
+</build>
+
